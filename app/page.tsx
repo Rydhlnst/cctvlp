@@ -37,6 +37,7 @@ import {
 
 import { ClientLogoBadge, REAL_WIKIMEDIA_CLIENTS } from "@/components/site/client-logos";
 import { Gallery } from "@/components/site/gallery";
+import { HeroCarousel } from "@/components/site/hero-carousel";
 import { Logo } from "@/components/site/logo";
 import { Navbar } from "@/components/site/navbar";
 import {
@@ -481,56 +482,64 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border/60">
-        <div className="mx-auto max-w-7xl px-6 pt-20 pb-14 md:pt-28 md:pb-20">
-          <Badge variant="secondary" className="gap-1.5">
-            <span className="size-1.5 rounded-full bg-primary" />
-            Perusahaan nasional · Sejak 2014
-          </Badge>
+        <div className="mx-auto max-w-7xl px-6 pt-16 pb-12 md:pt-24 md:pb-16">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            {/* Left Content Column */}
+            <div className="lg:col-span-7">
+              <Badge variant="secondary" className="gap-1.5">
+                <span className="size-1.5 rounded-full bg-primary" />
+                Perusahaan nasional · Sejak 2014
+              </Badge>
 
-          <h1 className="display-tight mt-8 text-balance text-6xl font-semibold md:text-[8.5rem]">
-            Keamanan &amp; teknis
-            <br />
-            untuk bisnis
-            <br />
-            <span className="text-primary">yang tumbuh.</span>
-          </h1>
+              <h1 className="display-tight mt-6 text-balance text-5xl font-semibold md:text-7xl lg:text-[5.5rem] tracking-tight">
+                Keamanan &amp; teknis
+                <br />
+                untuk bisnis
+                <br />
+                <span className="text-primary">yang tumbuh.</span>
+              </h1>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-[1.1fr_1fr] md:items-end">
-            <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              Electrical, Security System, Mechanical, PLC, dan Penyedia SDM —
-              satu mitra untuk seluruh kebutuhan teknis Anda, dikerjakan tim
-              tersertifikasi dengan standar K3LL menyeluruh.
-            </p>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                Electrical, Security System, Mechanical, PLC, dan Penyedia SDM —
+                satu mitra untuk seluruh kebutuhan teknis Anda, dikerjakan tim
+                tersertifikasi dengan standar K3LL menyeluruh.
+              </p>
 
-            <div className="flex flex-wrap gap-3 md:justify-end">
-              <WhatsAppButton product="Proyek Baru" intent="quote">
-                Mulai Proyek
-                <ArrowRight />
-              </WhatsAppButton>
-              <Button size="lg" variant="outline" asChild>
-                <a href="#produk">Jelajahi Produk</a>
-              </Button>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <WhatsAppButton product="Proyek Baru" intent="quote">
+                  Mulai Proyek
+                  <ArrowRight />
+                </WhatsAppButton>
+                <Button size="lg" variant="outline" asChild>
+                  <a href="#produk">Jelajahi Produk</a>
+                </Button>
+              </div>
+
+              {/* mini benefits row using Watermelon UI Item blocks */}
+              <ItemGroup className="mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+                {BENEFITS.map(({ icon: Icon, title }) => (
+                  <Item key={title} variant="muted" className="p-2.5 border border-border/40 bg-muted/40">
+                    <ItemMedia variant="icon" className="text-primary">
+                      <Icon className="size-4" />
+                    </ItemMedia>
+                    <ItemContent>
+                      <ItemTitle className="text-xs font-semibold text-foreground">{title}</ItemTitle>
+                    </ItemContent>
+                  </Item>
+                ))}
+              </ItemGroup>
+            </div>
+
+            {/* Right Landscape Carousel Column (Full landscape on mobile) */}
+            <div className="lg:col-span-5 w-full">
+              <HeroCarousel />
             </div>
           </div>
-
-          {/* mini benefits row using Watermelon UI Item blocks */}
-          <ItemGroup className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {BENEFITS.map(({ icon: Icon, title }) => (
-              <Item key={title} variant="muted" className="p-3 border border-border/40 bg-muted/40">
-                <ItemMedia variant="icon" className="text-primary">
-                  <Icon className="size-4" />
-                </ItemMedia>
-                <ItemContent>
-                  <ItemTitle className="text-xs font-semibold text-foreground">{title}</ItemTitle>
-                </ItemContent>
-              </Item>
-            ))}
-          </ItemGroup>
         </div>
 
         {/* Hero visual band — control room mock */}
         <div className="border-t border-border/60 bg-muted/30">
-          <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="mx-auto max-w-7xl px-6 py-8">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
               {[
                 "Gerbang Utama",
@@ -544,7 +553,7 @@ export default function Home() {
               ].map((label, i) => (
                 <div
                   key={label}
-                  className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-md border border-border/60 bg-background p-2 text-[10px] font-medium"
+                  className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-none border border-border/60 bg-background p-2 text-[10px] font-medium"
                 >
                   <div className="absolute inset-0 opacity-40">
                     <Cover kind={i % 2 === 0 ? "dots" : "grid"} />
