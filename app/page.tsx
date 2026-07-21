@@ -279,7 +279,7 @@ const LEGAL = [
 const FAQ = [
   {
     q: "Area layanan mana saja yang dijangkau?",
-    a: "Kami beroperasi di berbagai daerah di Indonesia, berpusat di Purwakarta, Jawa Barat. Proyek luar Jawa tetap kami tangani — silakan chat admin untuk konfirmasi lokasi dan estimasi mobilisasi tim.",
+    a: "Kami beroperasi di berbagai daerah di Indonesia, berpusat di Cikampek, Karawang, Jawa Barat — dengan cakupan aktif di Kawasan Industri Kota Bukit Indah (Bukit Indah City) dan sekitarnya. Proyek luar Jawa tetap kami tangani — silakan chat admin untuk konfirmasi lokasi dan estimasi mobilisasi tim.",
   },
   {
     q: "Bagaimana proses konsultasi dan survei?",
@@ -1039,8 +1039,9 @@ export default function Home() {
             <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
                 PT. Pakar Inspeksi Indonesia — perusahaan swasta berskala
-                nasional yang berdiri sejak 2014, berpusat di Purwakarta, Jawa
-                Barat.
+                nasional yang berdiri sejak 2014, berpusat di Cikampek,
+                Karawang, Jawa Barat, dengan cakupan aktif di Kawasan Industri
+                Kota Bukit Indah (Bukit Indah City) dan sekitarnya.
               </p>
               <p>
                 Kami meningkatkan kinerja lewat manajemen teknologi, budaya
@@ -1318,7 +1319,7 @@ export default function Home() {
                 <Marker className="items-start">
                   <MarkerIcon><MapPin className="mt-0.5 size-4 text-muted-foreground" /></MarkerIcon>
                   <MarkerContent className="text-xs leading-relaxed text-muted-foreground">
-                    Margasaluyu RT 01 RW 01, Desa Cisarua, Kec. Tegalwaru, Kab. Purwakarta, Jawa Barat.
+                    Jl. Perum Kebun Kembang Asri, Cikampek Tim., Kec. Cikampek, Karawang, Jawa Barat 41373.
                   </MarkerContent>
                 </Marker>
                 <Marker>
@@ -1331,7 +1332,7 @@ export default function Home() {
                 </Marker>
                 <Marker>
                   <MarkerIcon><Globe className="size-4 text-muted-foreground" /></MarkerIcon>
-                  <MarkerContent className="text-xs text-muted-foreground">pakarinspeksiindonesia.com</MarkerContent>
+                  <MarkerContent className="text-xs text-muted-foreground">inspeksiindonesia.com</MarkerContent>
                 </Marker>
               </div>
             </div>
@@ -1362,7 +1363,7 @@ export default function Home() {
               © {new Date().getFullYear()} PT. Pakar Inspeksi Indonesia. All
               rights reserved.
             </span>
-            <span>Purwakarta · Jawa Barat · Indonesia</span>
+            <span>Cikampek · Karawang · Jawa Barat · Indonesia</span>
           </div>
         </div>
       </footer>

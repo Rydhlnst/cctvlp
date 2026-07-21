@@ -18,7 +18,7 @@ const HERO_SLIDES: HeroSlide[] = [
     src: "/gallery/IMG-20260720-WA0001.jpg",
     title: "Instalasi Kamera CCTV Outdoor Perimeter",
     category: "Security System",
-    location: "Area Industri Purwakarta",
+    location: "Kawasan Industri Bukit Indah City",
   },
   {
     src: "/gallery/IMG-20260720-WA0059.jpg",
