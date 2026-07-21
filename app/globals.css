@@ -134,8 +134,21 @@
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
+  @keyframes marquee-x-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
   .animate-marquee {
     animation: marquee-x 45s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee-x-reverse 45s linear infinite;
+  }
+  .animate-marquee-slow {
+    animation: marquee-x 60s linear infinite;
+  }
+  .animate-marquee-slow-reverse {
+    animation: marquee-x-reverse 60s linear infinite;
   }
   .mask-fade-x {
     mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
@@ -144,5 +157,36 @@
   .display-tight {
     letter-spacing: -0.04em;
     line-height: 0.92;
+  }
+
+  /* Hero staggered reveal — video plays first, text fades/slides in after */
+  @keyframes hero-rise {
+    0%   { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+    100% { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+  }
+  .hero-in {
+    animation: hero-rise 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    will-change: opacity, transform, filter;
+  }
+  .hero-in-1 { animation-delay: 700ms; }
+  .hero-in-2 { animation-delay: 900ms; }
+  .hero-in-3 { animation-delay: 1150ms; }
+  .hero-in-4 { animation-delay: 1550ms; }
+  .hero-in-5 { animation-delay: 1850ms; }
+  .hero-in-6 { animation-delay: 2100ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-in,
+    .hero-in-1,
+    .hero-in-2,
+    .hero-in-3,
+    .hero-in-4,
+    .hero-in-5,
+    .hero-in-6 {
+      animation: none;
+      opacity: 1 !important;
+      transform: none;
+      filter: none;
+    }
   }
 }

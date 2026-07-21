@@ -123,11 +123,36 @@ function MegaLink({
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const THRESHOLD = 80;
+    let ticking = false;
+    const update = () => {
+      setScrolled(window.scrollY > THRESHOLD);
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
       id="top"
-      className="sticky top-0 z-50 border-b border-border bg-background"
+      aria-hidden={!(scrolled || open)}
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out",
+        scrolled || open
+          ? "translate-y-0 border-b border-border/60 bg-background/85 shadow-sm backdrop-blur-md"
+          : "pointer-events-none -translate-y-full opacity-0"
+      )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-6">
         <Logo />

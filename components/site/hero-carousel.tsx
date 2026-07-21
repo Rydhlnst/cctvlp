@@ -108,6 +108,8 @@ export function HeroCarousel() {
                 alt={slide.title}
                 className="h-full w-full object-cover object-center transition-transform duration-700"
                 loading={index === 0 ? "eager" : "lazy"}
+                decoding={index === 0 ? "sync" : "async"}
+                fetchPriority={index === 0 ? "high" : "auto"}
               />
 
               {/* Smooth Vignette / Gradient overlays */}

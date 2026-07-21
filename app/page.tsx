@@ -40,6 +40,9 @@ import { Gallery } from "@/components/site/gallery";
 import { HeroCarousel } from "@/components/site/hero-carousel";
 import { Logo } from "@/components/site/logo";
 import { Navbar } from "@/components/site/navbar";
+import { PosterCarousel } from "@/components/site/poster-carousel";
+import { VideoGallery } from "@/components/site/video-gallery";
+import { VideoSection } from "@/components/site/video-section";
 import {
   Accordion,
   AccordionContent,
@@ -86,7 +89,6 @@ const NAV = [
 const BENEFITS = [
   { icon: ShieldCheck, title: "K3LL menyeluruh" },
   { icon: Gauge, title: "Respons cepat 24/7" },
-  { icon: Award, title: "Tim bersertifikasi" },
   { icon: LineChart, title: "Skalabel & terpusat" },
 ];
 
@@ -96,58 +98,69 @@ const PRODUCTS = [
     title: "Layanan Jasa Pemasangan CCTV",
     tag: "Security System",
     desc: "Instalasi kamera CCTV HD/IP, DVR/NVR, integrasi jaringan pengawasan 24/7 untuk rumah, kantor & pabrik.",
-    cover: "dots",
+    image: "/gallery/IMG-20260720-WA0005.jpg",
   },
   {
     icon: Zap,
     title: "Layanan Jasa Instalasi Listrik",
     tag: "Electrical Works",
     desc: "Pemasangan dan peremajaan instalasi listrik tegangan rendah & menengah (MV/LV) standar K3LL.",
-    cover: "waves",
+    image: "/gallery/IMG-20260720-WA0060.jpg",
   },
   {
     icon: Cpu,
     title: "Layanan Jasa Perakitan Panel Listrik",
     tag: "Panel Assembly",
     desc: "Perakitan panel MDP, SDP, ATS-AMF, kapasitor bank, dan sinkronisasi genset terintegrasi.",
-    cover: "orbit",
+    image: "/gallery/IMG-20260720-WA0059.jpg",
   },
   {
     icon: CloudLightning,
     title: "Layanan Jasa Pemasangan Penangkal Petir",
     tag: "Lightning Protection",
     desc: "Pemasangan penangkal petir elektrostatis & konvensional untuk perlindungan maksimal bangunan.",
-    cover: "cross",
+    image: "/gallery/IMG-20260720-WA0063.jpg",
   },
   {
     icon: Layers,
     title: "Layanan Jasa Pemasangan Grounding Sistem",
     tag: "Grounding System",
     desc: "Pemasangan pembumian (grounding) dengan resistansi rendah untuk keamanan peralatan listrik & elektronik.",
-    cover: "pipes",
+    image: "/gallery/IMG-20260720-WA0083.jpg",
   },
   {
     icon: Car,
     title: "Layanan Jasa Pemasangan Charger Mobil Listrik",
     tag: "EV Charging Station",
     desc: "Instalasi charger EV (Electric Vehicle) home charging & SPKLU komersial yang aman dan standar.",
-    cover: "grid",
+    image: "/gallery/IMG-20260720-WA0080.jpg",
   },
   {
     icon: Lightbulb,
     title: "Layanan Jasa Pemasangan PJU",
     tag: "Public Street Lighting",
     desc: "Pemasangan Penerangan Jalan Umum (PJU) konvensional dan solar cell mandiri untuk jalan & perumahan.",
-    cover: "rays",
+    image: "/gallery/IMG-20260720-WA0077.jpg",
   },
   {
     icon: Building2,
     title: "Layanan Jasa Renovasi Rumah, Kantor dan Gedung",
     tag: "Renovation & Build",
     desc: "Pekerjaan renovasi total/parsial, struktur, interior, eksterior, dan sipil bangunan berkualitas.",
-    cover: "iso",
+    image: "/gallery/IMG-20260720-WA0071.jpg",
   },
 ] as const;
+
+const HERO_TILES = [
+  { label: "Gerbang Utama", src: "/gallery/IMG-20260720-WA0001.jpg" },
+  { label: "Warehouse", src: "/gallery/IMG-20260720-WA0080.jpg" },
+  { label: "Lobi", src: "/gallery/IMG-20260720-WA0006.jpg" },
+  { label: "Panel Room", src: "/gallery/IMG-20260720-WA0059.jpg" },
+  { label: "Parkir A", src: "/gallery/IMG-20260720-WA0002.jpg" },
+  { label: "Loading Bay", src: "/gallery/IMG-20260720-WA0004.jpg" },
+  { label: "Perimeter", src: "/gallery/IMG-20260720-WA0005.jpg" },
+  { label: "Server Room", src: "/gallery/IMG-20260720-WA0071.jpg" },
+];
 
 const SOLUTIONS = [
   {
@@ -480,11 +493,90 @@ export default function Home() {
     <div className="min-h-svh bg-background text-foreground">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border/60">
+      {/* Hero — MOBILE: cinematic video background with staggered text reveal */}
+      <section className="relative overflow-hidden border-b border-border/60 bg-black lg:hidden">
+        {/* Background video — LCP element on mobile */}
+        <video
+          src="/video/lapangan-1.mp4"
+          poster="/video/posters/lapangan-1.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Overlays — darken + brand gradient */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/90" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/70 via-transparent to-transparent" />
+
+        {/* Content — staggered fade-in */}
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-6 pb-14 pt-32">
+          <div className="opacity-0 hero-in hero-in-2">
+            <Badge
+              variant="secondary"
+              className="rounded-none border border-white/20 bg-white/10 text-white backdrop-blur-md"
+            >
+              <span className="size-1.5 rounded-full bg-primary" />
+              Perusahaan nasional · Sejak 2014
+            </Badge>
+          </div>
+
+          <h1 className="display-tight mt-6 text-balance text-5xl font-semibold tracking-tight text-white drop-shadow-lg md:text-7xl opacity-0 hero-in hero-in-3">
+            Keamanan &amp; teknis
+            <br />
+            untuk bisnis
+            <br />
+            <span className="text-primary">yang tumbuh.</span>
+          </h1>
+
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 drop-shadow md:text-lg opacity-0 hero-in hero-in-4">
+            Electrical, Security System, Mechanical, PLC, dan Penyedia SDM —
+            satu mitra untuk seluruh kebutuhan teknis Anda, dikerjakan tim
+            tersertifikasi dengan standar K3LL menyeluruh.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3 opacity-0 hero-in hero-in-5">
+            <WhatsAppButton product="Proyek Baru" intent="quote">
+              Mulai Proyek
+              <ArrowRight />
+            </WhatsAppButton>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white/30 bg-white/10 text-white backdrop-blur-md hover:bg-white/20 hover:text-white"
+              asChild
+            >
+              <a href="#produk">Jelajahi Produk</a>
+            </Button>
+          </div>
+
+          <ItemGroup className="mt-10 grid grid-cols-1 gap-2.5 sm:grid-cols-3 opacity-0 hero-in hero-in-6">
+            {BENEFITS.map(({ icon: Icon, title }) => (
+              <Item
+                key={title}
+                variant="muted"
+                className="rounded-none border border-white/15 bg-white/10 p-2.5 backdrop-blur-md"
+              >
+                <ItemMedia variant="icon" className="text-primary">
+                  <Icon className="size-4" />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle className="text-xs font-semibold text-white">
+                    {title}
+                  </ItemTitle>
+                </ItemContent>
+              </Item>
+            ))}
+          </ItemGroup>
+        </div>
+      </section>
+
+      {/* Hero — DESKTOP: original two-column layout */}
+      <section className="relative hidden overflow-hidden border-b border-border/60 lg:block">
         <div className="mx-auto max-w-7xl px-6 pt-16 pb-12 md:pt-24 md:pb-16">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            {/* Left Content Column */}
             <div className="lg:col-span-7">
               <Badge variant="secondary" className="gap-1.5">
                 <span className="size-1.5 rounded-full bg-primary" />
@@ -515,8 +607,7 @@ export default function Home() {
                 </Button>
               </div>
 
-              {/* mini benefits row using Watermelon UI Item blocks */}
-              <ItemGroup className="mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+              <ItemGroup className="mt-10 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
                 {BENEFITS.map(({ icon: Icon, title }) => (
                   <Item key={title} variant="muted" className="p-2.5 border border-border/40 bg-muted/40">
                     <ItemMedia variant="icon" className="text-primary">
@@ -530,48 +621,95 @@ export default function Home() {
               </ItemGroup>
             </div>
 
-            {/* Right Landscape Carousel Column (Full landscape on mobile) */}
             <div className="lg:col-span-5 w-full">
               <HeroCarousel />
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Hero visual band — control room mock */}
-        <div className="border-t border-border/60 bg-muted/30">
-          <div className="mx-auto max-w-7xl px-6 py-8">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
-              {[
-                "Gerbang Utama",
-                "Warehouse",
-                "Lobi",
-                "Panel Room",
-                "Parkir A",
-                "Loading Bay",
-                "Perimeter",
-                "Server Room",
-              ].map((label, i) => (
-                <div
-                  key={label}
-                  className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-none border border-border/60 bg-background p-2 text-[10px] font-medium"
-                >
-                  <div className="absolute inset-0 opacity-40">
-                    <Cover kind={i % 2 === 0 ? "dots" : "grid"} />
+      {/* Hero visual band — mobile: 2-row bidirectional marquee, desktop: 8-col grid */}
+      <section className="border-b border-border/60 bg-muted/30 py-6 md:py-8">
+        {/* MOBILE — 2 baris marquee kanan-kiri */}
+        <div className="mask-fade-x space-y-2 overflow-hidden md:hidden">
+          {[0, 1].map((row) => {
+            const tiles = row === 0 ? HERO_TILES.slice(0, 4) : HERO_TILES.slice(4);
+            return (
+              <div
+                key={row}
+                className={cn(
+                  "flex w-max gap-2",
+                  row === 0 ? "animate-marquee-slow" : "animate-marquee-slow-reverse"
+                )}
+              >
+                {[...tiles, ...tiles, ...tiles].map((tile, i) => (
+                  <div
+                    key={`${row}-${i}`}
+                    className="relative flex aspect-square w-32 shrink-0 flex-col justify-between overflow-hidden rounded-none border border-border/60 bg-background p-2 text-[10px] font-medium"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={tile.src}
+                      alt={tile.label}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40" />
+                    <div className="relative flex items-center gap-1 text-white/90 drop-shadow">
+                      <span className="relative flex size-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                        <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
+                      </span>
+                      LIVE
+                    </div>
+                    <div className="relative flex items-center justify-between text-white drop-shadow">
+                      <span>CH{String((row * 4 + (i % tiles.length)) + 1).padStart(2, "0")}</span>
+                      <span className="truncate">{tile.label}</span>
+                    </div>
                   </div>
-                  <div className="relative flex items-center gap-1 text-muted-foreground">
-                    <span className="size-1.5 rounded-full bg-primary" />
-                    LIVE
-                  </div>
-                  <div className="relative flex items-center justify-between text-muted-foreground">
-                    <span>CH{String(i + 1).padStart(2, "0")}</span>
-                    <span className="truncate">{label}</span>
-                  </div>
+                ))}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* TABLET/DESKTOP — 8-col grid */}
+        <div className="mx-auto hidden max-w-7xl px-6 md:block">
+          <div className="grid grid-cols-4 gap-2 lg:grid-cols-8">
+            {HERO_TILES.map((tile, i) => (
+              <div
+                key={tile.label}
+                className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-none border border-border/60 bg-background p-2 text-[10px] font-medium"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={tile.src}
+                  alt={tile.label}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40" />
+                <div className="relative flex items-center gap-1 text-white/90 drop-shadow">
+                  <span className="relative flex size-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                    <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
+                  </span>
+                  LIVE
                 </div>
-              ))}
-            </div>
+                <div className="relative flex items-center justify-between text-white drop-shadow">
+                  <span>CH{String(i + 1).padStart(2, "0")}</span>
+                  <span className="truncate">{tile.label}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Company profile video (lazy — nothing streams until user clicks Play) */}
+      <VideoSection />
 
       {/* Marquee clients */}
       <section className="overflow-hidden border-b border-border/60 bg-background py-8">
@@ -637,13 +775,21 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map(({ icon: Icon, title, tag, desc, cover }) => (
+            {PRODUCTS.map(({ icon: Icon, title, tag, desc, image }) => (
               <Card
                 key={title}
                 className="group relative flex flex-col overflow-hidden border-border/60 p-0 transition-all duration-300 hover:border-primary hover:shadow-md"
               >
-                <div className="relative aspect-[16/7] w-full overflow-hidden border-b border-border/60 bg-muted/50">
-                  <Cover kind={cover} />
+                <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-border/60 bg-muted/50">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image}
+                    alt={title}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   <div className="absolute left-4 top-4 flex size-9 items-center justify-center rounded-none bg-background text-primary shadow-xs">
                     <Icon className="size-4" />
                   </div>
@@ -681,6 +827,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Video gallery — dokumentasi & promosi (lazy per video) */}
+      <section id="video-gallery" className="border-b border-border/60 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="max-w-2xl">
+              <Badge variant="outline" className="mb-4">Galeri Video</Badge>
+              <h2 className="display-tight text-4xl font-semibold md:text-6xl">
+                Lihat proses & hasil.
+              </h2>
+            </div>
+            <p className="max-w-sm text-muted-foreground">
+              Video promosi tiap layanan + dokumentasi lapangan. Klik untuk
+              memutar — hanya video yang di‑klik yang akan dimuat.
+            </p>
+          </div>
+
+          <VideoGallery />
+        </div>
+      </section>
+
+      {/* Poster / Materi Layanan — carousel */}
+      <section id="materi" className="border-b border-border/60">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="max-w-2xl">
+              <Badge variant="outline" className="mb-4">Materi Layanan</Badge>
+              <h2 className="display-tight text-4xl font-semibold md:text-6xl">
+                Brosur & poster resmi.
+              </h2>
+            </div>
+            <p className="max-w-sm text-muted-foreground">
+              Geser untuk melihat materi tiap layanan. Klik poster untuk versi
+              lengkap yang bisa dibagikan atau dicetak.
+            </p>
+          </div>
+
+          <PosterCarousel />
+        </div>
+      </section>
+
       {/* Solutions tabs */}
       <section id="solusi" className="border-b border-border/60 bg-muted/30">
         <div className="mx-auto max-w-7xl px-6 py-24">
@@ -692,17 +878,24 @@ export default function Home() {
           </div>
 
           <Tabs defaultValue={SOLUTIONS[0].id} className="gap-8">
-            <TabsList
-              variant="line"
-              className="mx-auto flex w-fit flex-wrap justify-center gap-2"
-            >
-              {SOLUTIONS.map(({ id, icon: Icon, label }) => (
-                <TabsTrigger key={id} value={id}>
-                  <Icon />
-                  {label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            {/* Horizontal-scroll tablist on mobile — no wrapping onto card */}
+            <div className="mask-fade-x -mx-6 overflow-x-auto px-6 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <TabsList
+                variant="line"
+                className="mx-auto flex w-max min-w-full snap-x snap-mandatory items-center justify-start gap-2 md:justify-center md:flex-wrap"
+              >
+                {SOLUTIONS.map(({ id, icon: Icon, label }) => (
+                  <TabsTrigger
+                    key={id}
+                    value={id}
+                    className="shrink-0 snap-start whitespace-nowrap"
+                  >
+                    <Icon />
+                    {label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
 
             {SOLUTIONS.map((s) => (
               <TabsContent key={s.id} value={s.id}>
