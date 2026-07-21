@@ -26,12 +26,6 @@ export type PosterItem = {
 
 export const POSTERS: PosterItem[] = [
   {
-    src: "/posters/poster-01.jpg",
-    title: "Materi Layanan Pakar Inspeksi Indonesia",
-    tag: "Materi Layanan",
-    desc: "Poster resmi layanan PT. Pakar Inspeksi Indonesia.",
-  },
-  {
     src: "/posters/poster-02.jpg",
     title: "Materi Layanan Pakar Inspeksi Indonesia",
     tag: "Materi Layanan",
