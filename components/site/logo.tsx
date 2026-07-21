@@ -30,6 +30,9 @@ export function Logo({
         alt="PT. Pakar Inspeksi Indonesia"
         className={cn(
           "w-auto object-contain transition-opacity group-hover:opacity-95",
+          // invert(1) makes black→white and red→cyan; hue-rotate(180deg) brings cyan back to red.
+          // Net result: dark text → white, brand red stays red, transparent areas unaffected.
+          "dark:[filter:invert(1)_hue-rotate(180deg)]",
           variant === "footer" ? "h-12 md:h-14" : "h-9 md:h-11",
           imgClassName
         )}

@@ -132,6 +132,7 @@ export function ClientLogoBadge({
     <div
       className={cn(
         "relative inline-flex h-8 shrink-0 items-center justify-center md:h-9",
+        "dark:rounded-sm dark:bg-white/[0.07] dark:px-2 dark:ring-1 dark:ring-white/[0.04]",
         className
       )}
       title={match.name}
@@ -149,6 +150,7 @@ export function ClientLogoBadge({
         alt={`${match.name} logo`}
         className={cn(
           "h-8 w-auto object-contain md:h-9",
+          "dark:brightness-[1.15]",
           !imgLoaded && "absolute inset-0 opacity-0"
         )}
         onLoad={() => setImgLoaded(true)}

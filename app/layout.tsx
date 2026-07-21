@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { FloatingWA } from "@/components/site/floating-wa";
 
@@ -84,6 +85,8 @@ export default function RootLayout({
       className={`${jakarta.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        {/* Tell browsers we handle dark mode ourselves — disables Chrome Auto Dark Mode */}
+        <meta name="color-scheme" content="light dark" />
         {/* LCP hint — mobile hero poster (28KB, tiny). Media query keeps desktop untouched. */}
         <link
           rel="preload"
@@ -134,8 +137,10 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        {children}
-        <FloatingWA />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+          <FloatingWA />
+        </ThemeProvider>
       </body>
     </html>
   );
