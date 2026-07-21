@@ -57,7 +57,7 @@ export const VIDEO_ITEMS: VideoItem[] = [
   },
   {
     src: "/video/folkip.mp4",
-    title: "Promosi FOLKIP",
+    title: "Promosi Forklift",
     tag: "Security",
     poster: "/video/posters/folkip.jpg",
   },
