@@ -504,7 +504,6 @@ export default function Home() {
           loop
           playsInline
           preload="metadata"
-          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
         />
         {/* Overlays — darken + brand gradient */}
