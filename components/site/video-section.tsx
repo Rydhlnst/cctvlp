@@ -4,6 +4,7 @@ import * as React from "react";
 import { Play, ShieldCheck, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { r2 } from "@/lib/r2";
 
 export type VideoSectionProps = {
   poster?: string;
@@ -14,8 +15,8 @@ export type VideoSectionProps = {
 };
 
 export function VideoSection({
-  poster = "/gallery/IMG-20260720-WA0071.jpg",
-  src = "/video/promosi-pjuts.mp4",
+  poster = r2("/gallery/IMG-20260720-WA0071.jpg"),
+  src = r2("/video/promosi-pjuts.mp4"),
   title = "Company Profile — PT. Pakar Inspeksi Indonesia",
   eyebrow = "Company Profile",
   desc = "Cuplikan singkat perjalanan tim, lingkup layanan, dan proyek lintas industri sejak 2014.",
