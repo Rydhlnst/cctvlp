@@ -26,7 +26,6 @@ export function VideoSection({
   React.useEffect(() => {
     if (!playing || !videoRef.current) return;
     const video = videoRef.current;
-    video.load();
     video.play().catch(() => {});
   }, [playing]);
 

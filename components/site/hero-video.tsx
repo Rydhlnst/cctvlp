@@ -14,7 +14,6 @@ export function HeroVideo({ src, poster, className }: HeroVideoProps) {
   React.useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    video.load();
     video.play().catch(() => {});
   }, []);
 

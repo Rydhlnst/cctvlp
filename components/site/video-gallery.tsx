@@ -110,7 +110,6 @@ export function VideoGallery({ items = VIDEO_ITEMS }: { items?: VideoItem[] }) {
   React.useEffect(() => {
     if (!active || !videoRef.current) return;
     const video = videoRef.current;
-    video.load();
     video.play().catch(() => {});
   }, [active]);
 
