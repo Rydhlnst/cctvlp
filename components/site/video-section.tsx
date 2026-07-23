@@ -29,8 +29,14 @@ export function VideoSection({
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
 
   React.useEffect(() => {
-    if (playing && videoRef.current) {
-      videoRef.current.play().catch(() => {});
+    if (!playing || !videoRef.current) return;
+    const video = videoRef.current;
+    const tryPlay = () => video.play().catch(() => {});
+    if (video.readyState >= 3) {
+      tryPlay();
+    } else {
+      video.addEventListener("canplay", tryPlay, { once: true });
+      return () => video.removeEventListener("canplay", tryPlay);
     }
   }, [playing]);
 
@@ -117,8 +123,9 @@ export function VideoSection({
                 src={src}
                 poster={poster}
                 controls
+                autoPlay
                 playsInline
-                preload="none"
+                preload="auto"
                 className="absolute inset-0 h-full w-full bg-black object-contain"
               >
                 Browser Anda tidak mendukung pemutaran video.
