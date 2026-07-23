@@ -14,6 +14,7 @@ export function HeroVideo({ src, poster, className }: HeroVideoProps) {
   React.useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    video.load();
     video.play().catch(() => {});
   }, []);
 
@@ -26,7 +27,7 @@ export function HeroVideo({ src, poster, className }: HeroVideoProps) {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       className={className}
     />
   );

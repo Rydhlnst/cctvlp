@@ -25,7 +25,9 @@ export function VideoSection({
 
   React.useEffect(() => {
     if (!playing || !videoRef.current) return;
-    videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    video.load();
+    video.play().catch(() => {});
   }, [playing]);
 
   const handlePlay = () => {
@@ -114,7 +116,7 @@ export function VideoSection({
                 autoPlay
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 className="absolute inset-0 h-full w-full bg-black object-contain"
               >
                 Browser Anda tidak mendukung pemutaran video.

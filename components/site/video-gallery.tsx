@@ -109,7 +109,9 @@ export function VideoGallery({ items = VIDEO_ITEMS }: { items?: VideoItem[] }) {
 
   React.useEffect(() => {
     if (!active || !videoRef.current) return;
-    videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    video.load();
+    video.play().catch(() => {});
   }, [active]);
 
   const open = (item: VideoItem) => {
@@ -226,7 +228,7 @@ export function VideoGallery({ items = VIDEO_ITEMS }: { items?: VideoItem[] }) {
                 autoPlay
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 className="absolute inset-0 h-full w-full bg-black object-contain"
               >
                 Browser Anda tidak mendukung pemutaran video ini.
