@@ -107,11 +107,14 @@ export function VideoGallery({ items = VIDEO_ITEMS }: { items?: VideoItem[] }) {
     };
   }, [api]);
 
+  React.useEffect(() => {
+    if (active && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, [active]);
+
   const open = (item: VideoItem) => {
     setActive(item);
-    requestAnimationFrame(() => {
-      videoRef.current?.play().catch(() => {});
-    });
   };
 
   const close = () => {

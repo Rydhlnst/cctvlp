@@ -28,11 +28,14 @@ export function VideoSection({
   const [playing, setPlaying] = React.useState(false);
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
 
+  React.useEffect(() => {
+    if (playing && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, [playing]);
+
   const handlePlay = () => {
     setPlaying(true);
-    requestAnimationFrame(() => {
-      videoRef.current?.play().catch(() => {});
-    });
   };
 
   return (

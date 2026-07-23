@@ -38,6 +38,7 @@ import {
 import { ClientLogoBadge, REAL_WIKIMEDIA_CLIENTS } from "@/components/site/client-logos";
 import { Gallery } from "@/components/site/gallery";
 import { HeroCarousel } from "@/components/site/hero-carousel";
+import { HeroVideo } from "@/components/site/hero-video";
 import { Logo } from "@/components/site/logo";
 import { Navbar } from "@/components/site/navbar";
 import { PosterCarousel } from "@/components/site/poster-carousel";
@@ -496,14 +497,9 @@ export default function Home() {
       {/* Hero — MOBILE: cinematic video background with staggered text reveal */}
       <section className="relative overflow-hidden border-b border-border/60 bg-black lg:hidden">
         {/* Background video — LCP element on mobile */}
-        <video
+        <HeroVideo
           src="/video/lapangan-1.mp4"
           poster="/video/posters/lapangan-1.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
           className="absolute inset-0 h-full w-full object-cover"
         />
         {/* Overlays — darken + brand gradient */}
