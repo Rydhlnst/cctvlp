@@ -14,20 +14,7 @@ export function HeroVideo({ src, poster, className }: HeroVideoProps) {
   React.useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
-    const tryPlay = () => {
-      video.play().catch(() => {
-        video.muted = true;
-        video.play().catch(() => {});
-      });
-    };
-
-    if (video.readyState >= 3) {
-      tryPlay();
-    } else {
-      video.addEventListener("canplay", tryPlay, { once: true });
-      return () => video.removeEventListener("canplay", tryPlay);
-    }
+    video.play().catch(() => {});
   }, []);
 
   return (
@@ -39,7 +26,7 @@ export function HeroVideo({ src, poster, className }: HeroVideoProps) {
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       className={className}
     />
   );

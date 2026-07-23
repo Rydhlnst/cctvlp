@@ -707,9 +707,9 @@ export default function Home() {
       <VideoSection />
 
       {/* Marquee clients */}
-      <section className="overflow-hidden border-b border-border/60 bg-background py-8">
+      <section className="overflow-hidden border-b border-border/60 bg-white py-8">
         <div className="mx-auto max-w-7xl px-6 mb-6">
-          <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <p className="text-center text-xs font-semibold uppercase tracking-widest text-black/60">
             Dipercaya oleh Perusahaan &amp; BUMN Nasional
           </p>
         </div>
@@ -1131,7 +1131,7 @@ export default function Home() {
       </section>
 
       {/* Clients + Legalitas */}
-      <section className="border-b border-border/60 bg-muted/30">
+      <section className="border-b border-border/60 bg-white">
         <div className="mx-auto max-w-7xl px-6 py-24">
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <Badge variant="outline" className="mb-4">Klien</Badge>

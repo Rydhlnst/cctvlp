@@ -109,14 +109,7 @@ export function VideoGallery({ items = VIDEO_ITEMS }: { items?: VideoItem[] }) {
 
   React.useEffect(() => {
     if (!active || !videoRef.current) return;
-    const video = videoRef.current;
-    const tryPlay = () => video.play().catch(() => {});
-    if (video.readyState >= 3) {
-      tryPlay();
-    } else {
-      video.addEventListener("canplay", tryPlay, { once: true });
-      return () => video.removeEventListener("canplay", tryPlay);
-    }
+    videoRef.current.play().catch(() => {});
   }, [active]);
 
   const open = (item: VideoItem) => {
@@ -231,8 +224,9 @@ export function VideoGallery({ items = VIDEO_ITEMS }: { items?: VideoItem[] }) {
                 poster={active.poster}
                 controls
                 autoPlay
+                muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 className="absolute inset-0 h-full w-full bg-black object-contain"
               >
                 Browser Anda tidak mendukung pemutaran video ini.

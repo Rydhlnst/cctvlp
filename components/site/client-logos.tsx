@@ -132,7 +132,6 @@ export function ClientLogoBadge({
     <div
       className={cn(
         "relative inline-flex h-8 shrink-0 items-center justify-center md:h-9",
-        "dark:rounded-sm dark:bg-white/[0.07] dark:px-2 dark:ring-1 dark:ring-white/[0.04]",
         className
       )}
       title={match.name}
@@ -142,7 +141,7 @@ export function ClientLogoBadge({
       {!imgLoaded && (
         <span
           aria-hidden
-          className="inline-block h-6 w-20 animate-pulse rounded-sm bg-muted/60 md:h-7 md:w-24"
+          className="inline-block h-6 w-20 animate-pulse rounded-sm bg-black/10 md:h-7 md:w-24"
         />
       )}
       <img
@@ -150,7 +149,6 @@ export function ClientLogoBadge({
         alt={`${match.name} logo`}
         className={cn(
           "h-8 w-auto object-contain md:h-9",
-          "dark:brightness-[1.15]",
           !imgLoaded && "absolute inset-0 opacity-0"
         )}
         onLoad={() => setImgLoaded(true)}

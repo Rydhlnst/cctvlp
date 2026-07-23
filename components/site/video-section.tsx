@@ -13,14 +13,9 @@ export type VideoSectionProps = {
   desc?: string;
 };
 
-/**
- * Lightweight click-to-play video.
- * - Nothing is fetched until the user presses Play (preload="none").
- * - Poster image is a lazy-loaded JPG so it does not block LCP.
- */
 export function VideoSection({
   poster = "/gallery/IMG-20260720-WA0071.jpg",
-  src = "/video/company-profile.mp4",
+  src = "/video/promosi-pjuts.mp4",
   title = "Company Profile — PT. Pakar Inspeksi Indonesia",
   eyebrow = "Company Profile",
   desc = "Cuplikan singkat perjalanan tim, lingkup layanan, dan proyek lintas industri sejak 2014.",
@@ -30,14 +25,7 @@ export function VideoSection({
 
   React.useEffect(() => {
     if (!playing || !videoRef.current) return;
-    const video = videoRef.current;
-    const tryPlay = () => video.play().catch(() => {});
-    if (video.readyState >= 3) {
-      tryPlay();
-    } else {
-      video.addEventListener("canplay", tryPlay, { once: true });
-      return () => video.removeEventListener("canplay", tryPlay);
-    }
+    videoRef.current.play().catch(() => {});
   }, [playing]);
 
   const handlePlay = () => {
@@ -124,8 +112,9 @@ export function VideoSection({
                 poster={poster}
                 controls
                 autoPlay
+                muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 className="absolute inset-0 h-full w-full bg-black object-contain"
               >
                 Browser Anda tidak mendukung pemutaran video.
