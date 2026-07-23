@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { r2 } from "@/lib/r2";
 
 export type VideoItem = {
   src: string;
@@ -27,64 +26,64 @@ export type VideoItem = {
 
 export const VIDEO_ITEMS: VideoItem[] = [
   {
-    src: r2("/video/promosi-pjuts.mp4"),
+    src: "/video/promosi-pjuts.mp4",
     title: "Promosi PJUTS — Solar Cell",
     tag: "Public Lighting",
-    poster: r2("/video/posters/promosi-pjuts.jpg"),
+    poster: "/video/posters/promosi-pjuts.jpg",
   },
   {
-    src: r2("/video/promosi-genset.mp4"),
+    src: "/video/promosi-genset.mp4",
     title: "Promosi Genset — Kelistrikan Industri",
     tag: "Genset",
-    poster: r2("/video/posters/promosi-genset.jpg"),
+    poster: "/video/posters/promosi-genset.jpg",
   },
   {
-    src: r2("/video/genset-industri.mp4"),
+    src: "/video/genset-industri.mp4",
     title: "Genset untuk Industri",
     tag: "Genset",
-    poster: r2("/video/posters/genset-industri.jpg"),
+    poster: "/video/posters/genset-industri.jpg",
   },
   {
-    src: r2("/video/grounding-sistem.mp4"),
+    src: "/video/grounding-sistem.mp4",
     title: "Promosi Grounding Sistem",
     tag: "Grounding",
-    poster: r2("/video/posters/grounding-sistem.jpg"),
+    poster: "/video/posters/grounding-sistem.jpg",
   },
   {
-    src: r2("/video/akses-kontrol-pintu.mp4"),
+    src: "/video/akses-kontrol-pintu.mp4",
     title: "Promosi Akses Kontrol Pintu",
     tag: "Access Control",
-    poster: r2("/video/posters/akses-kontrol-pintu.jpg"),
+    poster: "/video/posters/akses-kontrol-pintu.jpg",
   },
   {
-    src: r2("/video/folkip.mp4"),
+    src: "/video/folkip.mp4",
     title: "Promosi Forklift",
     tag: "Security",
-    poster: r2("/video/posters/folkip.jpg"),
+    poster: "/video/posters/folkip.jpg",
   },
   {
-    src: r2("/video/purifikasi-oil-trafo.mp4"),
+    src: "/video/purifikasi-oil-trafo.mp4",
     title: "Purifikasi & Treatment Oil Trafo",
     tag: "Trafo Service",
-    poster: r2("/video/posters/purifikasi-oil-trafo.jpg"),
+    poster: "/video/posters/purifikasi-oil-trafo.jpg",
   },
   {
-    src: r2("/video/lapangan-1.mp4"),
+    src: "/video/lapangan-1.mp4",
     title: "Dokumentasi Lapangan #1",
     tag: "Field Work",
-    poster: r2("/video/posters/lapangan-1.jpg"),
+    poster: "/video/posters/lapangan-1.jpg",
   },
   {
-    src: r2("/video/lapangan-2.mp4"),
+    src: "/video/lapangan-2.mp4",
     title: "Dokumentasi Lapangan #2",
     tag: "Field Work",
-    poster: r2("/video/posters/lapangan-2.jpg"),
+    poster: "/video/posters/lapangan-2.jpg",
   },
   {
-    src: r2("/video/lapangan-3.mp4"),
+    src: "/video/lapangan-3.mp4",
     title: "Dokumentasi Lapangan #3",
     tag: "Field Work",
-    poster: r2("/video/posters/lapangan-3.jpg"),
+    poster: "/video/posters/lapangan-3.jpg",
   },
 ];
 

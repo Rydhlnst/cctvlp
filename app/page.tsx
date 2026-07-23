@@ -44,7 +44,6 @@ import { Navbar } from "@/components/site/navbar";
 import { PosterCarousel } from "@/components/site/poster-carousel";
 import { VideoGallery } from "@/components/site/video-gallery";
 import { VideoSection } from "@/components/site/video-section";
-import { r2 } from "@/lib/r2";
 import {
   Accordion,
   AccordionContent,
@@ -499,8 +498,8 @@ export default function Home() {
       <section className="relative overflow-hidden border-b border-border/60 bg-black lg:hidden">
         {/* Background video — LCP element on mobile */}
         <HeroVideo
-          src={r2("/video/lapangan-1.mp4")}
-          poster={r2("/video/posters/lapangan-1.jpg")}
+          src="/video/lapangan-1.mp4"
+          poster="/video/posters/lapangan-1.jpg"
           className="absolute inset-0 h-full w-full object-cover"
         />
         {/* Overlays — darken + brand gradient */}
